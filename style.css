@@ -1,0 +1,207 @@
+:root {
+ --background: var(--bg-light);
+ --text-color: var(--text-dark);
+
+  --bg-dark: #0d1b2a;
+  --text-dark: #000;
+  --bg-light: #fff;
+  --text-light: #fff;
+
+  --text-hover: #333;
+}
+
+@media (prefers-color-scheme: dark){
+  :root {
+    --background: var(--bg-dark);
+    --text-color: var(--text-light)
+    }
+}
+body {
+  background-color: var(--background);
+  color: var(--text-color);
+}
+body.dark {
+  --background: var(--bg-dark);
+  --text-color: var(--text-light);
+}
+body.light {
+  --background: var(--bg-light);
+  --text-color: var(--text-dark);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Tahoma";
+}
+.sidebar {
+  height: 100vh;
+  width: 5rem;
+  position: fixed;
+  top: 0;
+  background-color: var(--background);/*Need to add var(--background)*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px 1px #333;
+  transition: 0.5s ease all;
+  -webkit-transition: 0.5s ease all;
+  -moz-transition: 0.5s ease all;
+  -ms-transition: 0.5s ease all;
+  -o-transition: 0.5s ease all;
+}
+
+.navbar ul {
+  padding-left: 2rem;
+}
+.navbar ul li {
+  margin: 2rem 0;
+}
+.navbar ul li a {
+  display: flex;
+  height: 2rem;
+  position: relative;
+}
+.navbar ul li a i {
+  margin-right: 0.5rem;
+}
+.navbar ul li a span {
+  opacity: 0;
+  transition: 0.5s opacity ease 0.1s;
+  -webkit-transition: 0.5s opacity ease 0.1s;
+  -moz-transition: 0.5s opacity ease 0.1s;
+  -ms-transition: 0.5s opacity ease 0.1s;
+  -o-transition: 0.5s opacity ease 0.1s;
+}
+.navbar ul li a,
+i {
+  color: var(--text-color); /*Need to add var(--text-color)*/
+  transition: 0.5s all;
+}
+.fa-message:after {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    background-color: rgb(191, 86, 65);
+    animation-name: fade-in-out;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+@keyframes fade-in-out {
+    0%,100%{
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+.navbar ul li a:hover {
+  color: #333;
+}
+
+.sidebar:hover {
+  width: 11rem;
+}
+.sidebar:hover .navbar ul li a span {
+  opacity: 1;
+}
+  section {
+    padding: 4rem 12rem;
+  }
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+  margin-bottom: 2rem;
+}
+.switch_container {
+  display: flex;
+}
+#switch {
+  display: none;
+}
+.label {
+  position: relative;
+  height: 25px;
+  width: 70px;
+  background-color: #333;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+  overflow: hidden;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+}
+.label:hover {
+  cursor: pointer;
+}
+#switch:checked + .label {
+  background-color: #fe7f2d;
+} 
+.label::before {
+  content: '';
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: 0.8s ease;
+  -webkit-transition: 0.8s ease;
+  -moz-transition: 0.8s ease;
+  -ms-transition: 0.8s ease;
+  -o-transition: 0.8s ease;
+}
+.fa-sun,
+.fa-moon {
+  font-size: 1.3rem;
+  position: absolute;
+}
+.fa-sun {
+  top: 12%;
+  left: -31%;
+}
+.fa-moon {
+  top: 9%;
+  right: 9%;
+}
+#switch:checked + .label::before {
+  transform: translate(45px);
+  -webkit-transform: translate(45px);
+  -moz-transform: translate(45px);
+  -ms-transform: translate(45px);
+  -o-transform: translate(45px);
+}
+#switch:checked + .label .fa-sun {
+  left: 11%;
+}
+#switch:checked + .label .fa-moon {
+  right: -24%;
+}
+#switch:active + .label::before {
+  width: 35px;
+}
+
+
